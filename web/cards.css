@@ -1,0 +1,57 @@
+/* Instrument case with attached tabs and a small side rail for dosing mode. */
+body[data-variant=E] main{padding-top:24px}
+body[data-variant=E] .workspace.atlas{grid-template-columns:minmax(0,1fr) 440px;gap:30px 30px}
+body[data-variant=E] .atlas .instruments{position:sticky;top:48px;display:block;margin-top:38px;padding:22px 82px 20px 20px;border:1px solid #aa8062;border-radius:3px;background:#f8e9d1;box-shadow:4px 4px 0 #b9917133;min-width:0}
+body[data-variant=E] .instruments>.section-top{position:absolute;left:0;top:-39px;right:0;margin:0}
+body[data-variant=E] .instruments .instrument-tabs{display:flex;gap:6px;position:relative;margin:-45px 0 12px;padding:0;border:0;z-index:2}
+body[data-variant=E] .instruments .instrument-tabs button{min-height:36px;padding:13px 12px 8px;max-width:140px;font-size:.75rem;text-align:center}
+body[data-variant=E] .instruments .instrument-tabs button[aria-selected=true]{padding-top:13px}
+body[data-variant=E] .instruments .default-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 14px}
+body[data-variant=E] .atlas .instruments .default-panel>.instrument{padding:16px 0 20px;width:100%}
+body[data-variant=E] .instruments>.mode{position:absolute;right:14px;top:34px;display:flex;flex-direction:column;width:48px;gap:10px;margin:0;padding:0;border:0}
+body[data-variant=E] .instruments>.mode button{flex:none;aspect-ratio:1;width:48px;height:48px;min-width:48px;min-height:48px;display:grid;place-items:center;padding:7px;background:#fff0d8;color:#573b30;border:1px solid #ad8266;border-radius:2px;box-shadow:2px 2px 0 #b48b6d40}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true]{background:#fff0d8;color:#573b30;border:2px solid #a55234;box-shadow:0 0 0 2px #f3bb8e80}
+body[data-variant=E] .instruments>.mode .medicine-icon{width:34px;height:28px;overflow:visible}
+body[data-variant=E] .instruments>.mode button:first-child .medicine-icon{width:54px}
+body[data-variant=E] .mode button[data-tooltip]:after{left:auto;right:calc(100% + 12px);bottom:50%;transform:translateY(50%);text-align:left;max-width:200px}
+body[data-variant=E] .mode button[data-tooltip]:hover:after,body[data-variant=E] .mode button[data-tooltip]:focus-visible:after{transform:translateY(50%)}
+body[data-variant=E] .default-panel>.instrument:has(#dose):after{width:calc(200% + 14px)}
+body[data-variant=E] .instruments .label label{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem}
+.control-medicine-icon{display:inline-block;width:20px;height:24px;flex:none;image-rendering:pixelated}
+body[data-variant=E] .instruments .label{gap:6px}
+body[data-variant=E] .instruments .label output{font-size:.75rem}
+body[data-variant=E] .instruments .dosewrap{gap:8px}
+body[data-variant=E] .instruments .dialrow{padding-top:27px}
+body[data-variant=E] .instruments .advanced-panel .advanced{padding:18px 0}
+body[data-variant=E] .instruments .controlsfoot{margin-top:18px}
+.replay-symbol{display:block;width:23px;height:23px;transition:transform 180ms cubic-bezier(.2,0,0,1)}
+#restart:hover .replay-symbol{transform:rotate(-20deg)}
+body[data-variant=E] .atlas .stats{gap:12px;margin-top:18px;grid-template-columns:repeat(4,minmax(0,1fr))}
+body[data-variant=E] .stat{background:#fff0d8;border:1px solid #c4a183;border-radius:3px;padding:14px 12px 16px;box-shadow:2px 3px 0 #b48b6d26;min-width:0}
+body[data-variant=E] .atlas .stat span{min-height:34px;font-size:.75rem;line-height:1.5}
+body[data-variant=E] .atlas .stat strong{font-size:1.15rem;white-space:nowrap}
+body[data-variant=E] .stat strong small{font-size:.625rem}
+@media(max-width:1150px){body[data-variant=E] .workspace.atlas{grid-template-columns:minmax(0,1fr) 360px;gap:26px}body[data-variant=E] .atlas .instruments{padding:22px 18px 18px}body[data-variant=E] .instruments>.mode{position:static;flex-direction:row;width:auto;justify-content:flex-end;margin:16px 0 0}body[data-variant=E] .mode button[data-tooltip]:after{right:0;bottom:calc(100% + 10px);transform:none}body[data-variant=E] .mode button[data-tooltip]:hover:after,body[data-variant=E] .mode button[data-tooltip]:focus-visible:after{transform:none}body[data-variant=E] .atlas .stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){body[data-variant=E] .workspace.atlas{display:flex;flex-direction:column;gap:28px}body[data-variant=E] .atlas .instruments{position:relative;top:0;width:100%;margin-top:28px;order:2}body[data-variant=E] .specimen{order:0;width:100%}body[data-variant=E] .results{order:1;width:100%}body[data-variant=E] .atlas .instruments>.section-top{width:100%}body[data-variant=E] .instruments .instrument-tabs{margin-top:-45px}body[data-variant=E] .atlas .instruments .default-panel>.instrument{width:100%}}
+@media(prefers-reduced-motion:reduce){#restart:hover .replay-symbol{transform:none}}
+
+body[data-variant=E] .instruments .instrument-tabs{margin-top:-34px}
+@media(max-width:800px){body[data-variant=E] .instruments .instrument-tabs{margin-top:-34px}}
+
+#play[data-tooltip]:after{left:0;right:auto;transform:translateY(4px)}
+#restart[data-tooltip]:after{left:auto;right:0;transform:translateY(4px)}
+#play[data-tooltip]:hover:after,#play[data-tooltip]:focus-visible:after,#restart[data-tooltip]:hover:after,#restart[data-tooltip]:focus-visible:after{transform:translateY(0)}
+
+/* Tabs attach to the case's top edge rather than floating as mini folders. */
+body[data-variant=E] .atlas .instruments{padding-top:0}
+body[data-variant=E] .instruments .instrument-tabs{margin:0 -82px 14px -20px;gap:0;border-bottom:1px solid #c4a183;z-index:1;display:flex}
+body[data-variant=E] .instruments .instrument-tabs button{clip-path:none;max-width:none;min-height:44px;margin:0;padding:12px 16px;background:#e3d4c0;border:0;border-right:1px solid #c4a183;border-radius:0;color:#765646;box-shadow:none;transform:none;position:relative}
+body[data-variant=E] .instruments .instrument-tabs button:before,body[data-variant=E] .instruments .instrument-tabs button:after{content:none}
+body[data-variant=E] .instruments .instrument-tabs button:first-child{border-top-left-radius:2px}
+body[data-variant=E] .instruments .instrument-tabs button:last-child{border-top-right-radius:2px;border-right:0}
+body[data-variant=E] .instruments .instrument-tabs button[aria-selected=true]{background:#f3bb8e;color:#573b30;padding:12px 16px;box-shadow:inset 0 -3px 0 #ad6542;font-weight:700}
+body[data-variant=E] .instruments .instrument-tabs button:hover{transform:none;background:#f0cfad}
+body[data-variant=E] .instruments>.mode{top:65px}
+.replay-symbol{shape-rendering:geometricPrecision}
+@media(max-width:1150px){body[data-variant=E] .instruments .instrument-tabs{margin:0 -18px 14px}}
+@media(max-width:800px){body[data-variant=E] .instruments .instrument-tabs{margin-top:0}}

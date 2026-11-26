@@ -1,0 +1,13 @@
+body[data-variant=E] .intro{position:sticky;top:12px;z-index:70;display:flex;justify-content:center;pointer-events:none;margin-bottom:24px}
+body[data-variant=E] .intro .scenario-toolbar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;width:max-content;max-width:100%;padding:6px;background:#fff0d8f5;border:1px solid #ab8062;border-radius:8px;box-shadow:0 3px 0 #b48b6d55,0 8px 24px #573b3017;pointer-events:auto}
+body[data-variant=E] .scenario-picker{width:auto;min-width:0;max-width:100%}
+body[data-variant=E] .scenario-picker:after{display:none}
+.scenario-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center}
+body[data-variant=E] .scenario-nav button{min-height:40px;padding:9px 18px;background:transparent;border:1px solid transparent;border-radius:4px;color:#715442;font-size:.8125rem;line-height:1.4;box-shadow:none;transition:background 160ms,color 160ms,transform 160ms,box-shadow 160ms}
+body[data-variant=E] .scenario-nav button:hover{background:#f7dfc2;transform:translateY(-1px)}
+body[data-variant=E] .scenario-nav button[aria-pressed=true]{background:#f3bd90;border-color:#b77752;color:#573b30;box-shadow:inset 0 1px #ffe3bf,0 2px 0 #bd8964;font-weight:600}
+body[data-variant=E] .scenario-nav button:active{transform:translateY(1px);box-shadow:none}
+body[data-variant=E] .scenario-nav button:focus-visible{outline:2px solid #a55234;outline-offset:2px}
+body[data-variant=E] #explore:not([hidden]){min-height:40px;border-radius:4px;padding:8px 12px;border-color:#cfaa86;background:#fff5e5;box-shadow:none}
+@media(max-width:680px){body[data-variant=E] .intro{display:flex;top:8px}body[data-variant=E] .intro .scenario-toolbar{width:auto;gap:6px}body[data-variant=E] .scenario-nav button{padding:9px 12px;font-size:.75rem}}
+@media(prefers-reduced-motion:reduce){body[data-variant=E] .scenario-nav button{transition:none}}

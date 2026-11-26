@@ -1,0 +1,67 @@
+/* Physical edge tabs and matching illustration/instrument card height. */
+body[data-variant=E] main{padding-right:calc(4% + 40px)}
+body[data-variant=E] .atlas .instruments{height:650px;min-height:0;padding:0 20px 14px;display:flex;flex-direction:column;overflow:visible;align-self:start}
+body[data-variant=E] .instruments .instrument-tabs{flex:none;margin:0 -20px 10px}
+body[data-variant=E] .instruments .default-panel,body[data-variant=E] .instruments .advanced-panel{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:5px;align-content:start;scrollbar-width:thin;scrollbar-color:#c38c64 #f8e9d1}
+body[data-variant=E] .instruments .default-panel>.instrument{padding-top:12px;padding-bottom:16px}
+body[data-variant=E] .instruments .graphic-slider{height:64px}
+body[data-variant=E] .instruments .controlsfoot{flex:none;margin:12px 0 0}
+body[data-variant=E] .instruments .app-status:empty{display:none}
+body[data-variant=E] .instruments .app-status{flex:none;margin-top:8px;min-height:0}
+body[data-variant=E] .instruments>.mode{position:absolute;left:calc(100% - 1px);right:auto;top:64px;display:flex;flex-direction:column;gap:8px;width:42px;margin:0;padding:0;z-index:4}
+body[data-variant=E] .instruments>.mode button{width:42px;min-width:42px;height:46px;min-height:46px;aspect-ratio:auto;border-left:0;border-radius:0 4px 4px 0;background:#f8e9d1;box-shadow:2px 2px 0 #b48b6d40;padding:6px}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true]{border:1px solid #a55234;border-left:0;background:#f8e9d1;box-shadow:inset -3px 0 0 #d17e50,2px 2px 0 #b48b6d40}
+body[data-variant=E] .instruments>.mode button:hover{transform:translateX(2px)}
+body[data-variant=E] .mode button[data-tooltip]:after{right:calc(100% + 10px);bottom:50%;left:auto;transform:translateY(50%);max-width:160px}
+body[data-variant=E] .mode button[data-tooltip]:hover:after,body[data-variant=E] .mode button[data-tooltip]:focus-visible:after{transform:translateY(50%)}
+body[data-variant=E] .chartbox{position:relative;overflow:visible}
+body[data-variant=E] .chartbox>.pin-tab{position:absolute;right:-39px;top:20px;width:40px;height:46px;min-height:46px;display:grid;place-items:center;padding:7px;margin:0;background:var(--panel);border:1px solid #98715a;border-left:0;border-radius:0 4px 4px 0;box-shadow:2px 2px 0 #b48b6d40;z-index:2}
+body[data-variant=E] .chartbox>.pin-tab[aria-pressed=true]{box-shadow:inset -3px 0 0 #d17e50,2px 2px 0 #b48b6d40}
+body[data-variant=E] .chartbox>.pin-tab:after{right:calc(100% + 10px);left:auto;bottom:50%;transform:translateY(50%)}
+body[data-variant=E] .chartbox>.pin-tab:hover:after,body[data-variant=E] .chartbox>.pin-tab:focus-visible:after{transform:translateY(50%)}
+body[data-variant=E] .graph-tools{justify-content:flex-end}
+@media(max-width:680px){body[data-variant=E] .atlas .instruments{height:435px}body[data-variant=E] .instruments .default-panel{column-gap:10px}body[data-variant=E] .instruments .dosewrap{gap:5px}body[data-variant=E] .instruments .dose-buttons button{padding-inline:10px}body[data-variant=E] .instruments .dial{width:96px;height:96px}body[data-variant=E] .instruments .dial:after{left:39px;top:39px}body[data-variant=E] .instruments .hand{top:13px}body[data-variant=E] .stage>.legend{flex-direction:column;align-items:center;gap:3px}}
+@media(prefers-reduced-motion:reduce){body[data-variant=E] .instruments>.mode button:hover{transform:none}}
+
+body[data-variant=E] .atlas .instruments{align-items:stretch}
+
+/* Quiet scroll area; raised book tabs; pin lives inside the plot card. */
+body[data-variant=E] .instruments .default-panel,body[data-variant=E] .instruments .advanced-panel{scrollbar-width:none;padding-right:0}
+body[data-variant=E] .instruments .default-panel::-webkit-scrollbar,body[data-variant=E] .instruments .advanced-panel::-webkit-scrollbar{display:none;width:0;height:0}
+body[data-variant=E] .instruments>.mode{width:54px}
+body[data-variant=E] .instruments>.mode button{width:40px;min-width:40px;border:1px solid #b79a7c;border-left:0;box-shadow:1px 2px 0 #b48b6d33;transition:box-shadow 160ms,background-color 160ms,transform 160ms}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true]{width:54px;min-width:54px;border:1px solid #b79a7c;border-left:0;background:#fff0d8;box-shadow:4px 4px 0 #b48b6d59}
+body[data-variant=E] .instruments>.mode button:hover{transform:none;background:#fff0d8}
+body[data-variant=E] .chartbox>.pin-tab{right:12px;top:10px;width:36px;height:36px;min-height:36px;margin:0;padding:6px;border:1px solid #b7997e;border-radius:2px;background:#fff0d8;box-shadow:1px 2px 0 #b48b6d33}
+body[data-variant=E] .chartbox>.pin-tab[aria-pressed=true]{background:#f3bb8e;box-shadow:1px 2px 0 #b48b6d40}
+body[data-variant=E] .chartbox>.pin-tab:after{right:0;left:auto;bottom:calc(100% + 9px);transform:translateY(4px)}
+body[data-variant=E] .chartbox>.pin-tab:hover:after,body[data-variant=E] .chartbox>.pin-tab:focus-visible:after{transform:translateY(0)}
+body[data-variant=E] .chart-title{padding-right:44px;min-height:24px}
+body[data-variant=E] .instruments .controlsfoot{display:flex;align-items:center;gap:14px;min-height:40px}
+.loading-spinner{display:inline-block;width:18px;height:18px;border:3px solid #d6b99a;border-top-color:#a55234;border-right-color:#a55234;border-radius:3px;animation:pixel-spin 850ms steps(8,end) infinite}
+@keyframes pixel-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.loading-spinner{animation:none}body[data-variant=E] .instruments>.mode button{transition:none}}
+
+/* Animated tab indicator and a smoothly extending book tab. */
+body[data-variant=E] .instruments .instrument-tabs{position:relative}
+body[data-variant=E] .instruments .instrument-tabs:before{content:'';position:absolute;left:0;bottom:0;height:3px;width:50%;background:#ad6542;z-index:3;pointer-events:none;transform:translateX(0);transition:transform 220ms cubic-bezier(.2,0,0,1)}
+body[data-variant=E] .instruments .instrument-tabs[data-selected=advanced]:before{transform:translateX(100%)}
+body[data-variant=E] .instruments .instrument-tabs button{transition:background-color 200ms,color 200ms}
+body[data-variant=E] .instruments .instrument-tabs button[aria-selected=true]{box-shadow:none}
+body[data-variant=E] .instruments>.mode button{width:54px;min-width:54px;clip-path:inset(-5px 14px -6px 0);transition:clip-path 200ms cubic-bezier(.2,0,0,1),box-shadow 200ms,background-color 200ms}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true]{clip-path:inset(-5px -6px -6px 0)}
+body[data-variant=E] .instruments>.mode button .medicine-icon{transform:translateX(-7px);transition:transform 200ms cubic-bezier(.2,0,0,1)}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true] .medicine-icon{transform:translateX(0)}
+body[data-variant=E] .default-panel[data-single=true]>.instrument:has(#dose){grid-column:1 / -1}
+body[data-variant=E] .default-panel[data-single=true]>.instrument:has(#dose):after{width:100%}
+body[data-variant=E] .default-panel[data-single=true] .dosewrap{justify-content:center;gap:24px}
+.loading-spinner{border-radius:50%;border-right-color:#d6b99a;animation:round-spin 700ms linear infinite}
+@keyframes round-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){body[data-variant=E] .instruments .instrument-tabs:before,body[data-variant=E] .instruments>.mode button,body[data-variant=E] .instruments>.mode button .medicine-icon{transition:none}.loading-spinner{animation:none}}
+
+/* Retraction uses complete tab geometry; no clipping of its border or tooltip. */
+body[data-variant=E] .instruments>.mode button{clip-path:none;width:40px;min-width:40px;overflow:visible;transition:background-color 200ms,box-shadow 200ms,transform 200ms}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true]{clip-path:none;width:54px;min-width:54px}
+body[data-variant=E] .instruments>.mode button .medicine-icon,body[data-variant=E] .instruments>.mode button:first-child .medicine-icon{width:36px;height:30px;transform:none;flex:none}
+body[data-variant=E] .instruments>.mode button[aria-pressed=true] .medicine-icon{transform:scale(1.06)}
+@media(prefers-reduced-motion:reduce){body[data-variant=E] .instruments>.mode button[aria-pressed=true] .medicine-icon{transform:none}}

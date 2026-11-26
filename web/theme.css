@@ -1,0 +1,167 @@
+/* E keeps B's layout and design; only requested interaction/art upgrades differ. */
+body[data-variant=E]{--bg:#dce7e7;--panel:#f0f6f3;--ink:#24464b;--line:#a5c2c4;--mint:#a0cfcb;--dark:#1b3943;--accent:#256a70}
+body[data-variant=E] .stage{background:radial-gradient(circle at 1px 1px,#31534f 0.7px,transparent 1px) 0 0 / 9px 9px,var(--dark)}
+body[data-variant=E] .bodycanvas{image-rendering:pixelated}
+body[data-variant=E] .route-label{display:none!important}
+.graphic-slider,.graphic-scale{display:none}
+body[data-variant=E] .pk>input[type=range]{display:none}
+body[data-variant=E] .graphic-slider{height:56px;margin-top:14px;display:flex;align-items:end;gap:4px;position:relative;touch-action:none;cursor:ew-resize;user-select:none;padding:5px 0 10px}
+body[data-variant=E] .graphic-slider i{flex:1;min-width:0;display:block;background:var(--line);border:1px solid var(--accent);opacity:.35}
+body[data-variant=E] .graphic-slider i.active{background:var(--mint);opacity:1}
+body[data-variant=E] .graphic-slider:after{content:'';position:absolute;left:clamp(0px,var(--position),calc(100% - 7px));bottom:0;width:7px;height:5px;background:var(--accent);clip-path:polygon(50% 0,100% 100%,0 100%)}
+body[data-variant=E] .graphic-scale{display:flex;justify-content:space-between;font:.6875rem var(--mono);color:var(--muted);margin-top:5px}
+body[data-variant=E] .locked .graphic-slider{cursor:default}
+
+/* Stack graph below body; restore full-size instruments rather than B's compact rail. */
+body[data-variant=E] .workspace.atlas{grid-template-columns:minmax(0,1fr) 350px;gap:30px 32px}
+body[data-variant=E] .atlas .results{grid-column:1;grid-row:2}
+body[data-variant=E] .atlas .specimen{grid-column:1;grid-row:1}
+body[data-variant=E] .atlas .instruments{grid-column:2;grid-row:1 / span 2}
+body[data-variant=E] .atlas .instruments .instrument{width:100%;display:block;padding:22px 8px}
+body[data-variant=E] .atlas .instruments .instrument:nth-of-type(1),body[data-variant=E] .atlas .instruments .instrument:nth-of-type(2){width:48%;display:inline-block;vertical-align:top}
+body[data-variant=E] .atlas .cylinder{height:140px;width:72px}
+body[data-variant=E] .atlas .dial{width:110px;height:110px}
+body[data-variant=E] .atlas .dial:after{left:46px;top:46px}
+body[data-variant=E] .atlas .hand{top:20px}
+body[data-variant=E] .atlas .dialrow{padding-top:30px}
+body[data-variant=E] .atlas .chartbox canvas{height:250px}
+body[data-variant=E] .atlas .stats{grid-template-columns:repeat(4,1fr);gap:12px}
+body[data-variant=E] .atlas .stat strong{font-size:1.1rem}
+body[data-variant=E] .atlas .stat span{font-size:.75rem;min-height:36px}
+body[data-variant=E] .atlas .instruments details{display:block}
+body[data-variant=E] .atlas .controlsfoot{margin-top:20px}
+body[data-variant=E] .graphic-slider{height:76px}
+body[data-variant=E] .legend .dot:not(.orange){background:#58d5c2}
+body[data-variant=E] .viewname{display:none}
+@media(max-width:1000px){body[data-variant=E] .workspace.atlas{grid-template-columns:minmax(0,1fr) 290px;gap:24px}body[data-variant=E] .atlas .instruments .instrument:nth-of-type(1),body[data-variant=E] .atlas .instruments .instrument:nth-of-type(2){width:100%;display:block}body[data-variant=E] .atlas .dialrow{padding-top:14px}body[data-variant=E] .atlas .stats{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){body[data-variant=E] .workspace.atlas{display:flex;flex-direction:column}body[data-variant=E] .results{order:1}body[data-variant=E] .specimen{order:0}body[data-variant=E] .instruments{order:2}body[data-variant=E] .atlas .instruments .instrument{width:100%}body[data-variant=E] .atlas .stats{grid-template-columns:1fr 1fr}}
+
+/* Keep dose and interval together at full instrument size. */
+body[data-variant=E] .atlas .instruments{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:16px;align-items:start}
+body[data-variant=E] .atlas .instruments>.section-top,body[data-variant=E] .atlas .instruments>.mode,body[data-variant=E] .atlas .instruments>.pk,body[data-variant=E] .atlas .instruments>details,body[data-variant=E] .atlas .instruments>.controlsfoot{grid-column:1 / -1}
+body[data-variant=E] .atlas .instruments>.instrument{width:100%;min-width:0}
+body[data-variant=E] .atlas .instruments>.instrument:has(#dose){grid-column:1;grid-row:3}
+body[data-variant=E] .atlas .instruments>.instrument:has(#interval){grid-column:2;grid-row:3}
+body[data-variant=E] .atlas .instruments>.instrument:has(#dose) .dosewrap{gap:12px}
+body[data-variant=E] .atlas .instruments>.instrument:has(#interval) .dialrow{padding-top:30px}
+
+/* A single continuous separator spans the paired dose instruments. */
+body[data-variant=E] .atlas .instruments>.instrument:has(#dose),body[data-variant=E] .atlas .instruments>.instrument:has(#interval){border-bottom:0}
+body[data-variant=E] .atlas .instruments>.instrument:has(#dose){position:relative}
+body[data-variant=E] .atlas .instruments>.instrument:has(#dose)::after{content:'';position:absolute;left:0;bottom:0;width:calc(200% + 16px);height:1px;background:var(--line);pointer-events:none}
+
+/* Remove user-marked redundant copy in E; retain original prototypes. */
+body[data-variant=E] #subhead,body[data-variant=E] #body-title,body[data-variant=E] .instruments>.section-top>.tag{display:none}
+body[data-variant=E] .specimen>.section-top{justify-content:flex-end}
+
+/* Requested E layout cleanup and pixel instrument tabs. */
+body[data-variant=E] #time-tag,body[data-variant=E] .results>.section-top>.tag{display:none}
+body[data-variant=E] .specimen>.section-top{justify-content:flex-start;margin-bottom:12px}
+body[data-variant=E] #headline{font:700 1.35rem/1.3 var(--mono);letter-spacing:-.04em}
+body[data-variant=E] .intro{margin-bottom:18px;justify-content:flex-end}
+body[data-variant=E] .intro>div:first-child{display:none}
+body[data-variant=E] .bodyfoot{display:none}
+body[data-variant=E] .stage{padding-bottom:54px}
+body[data-variant=E] .stage>.legend{position:absolute;bottom:20px;left:20px;right:20px;margin:0;color:var(--panel);font:.6875rem/1.5 var(--mono);justify-content:center;gap:18px}
+body[data-variant=E] .instrument-tabs{grid-column:1 / -1;display:flex;gap:6px;border-bottom:2px solid var(--ink);margin:4px 0 16px;padding:0 4px}
+body[data-variant=E] .instrument-tabs button{flex:1;box-shadow:none;border:2px solid var(--ink);border-bottom:0;background:var(--line);padding:10px 6px;font:.8125rem var(--mono);position:relative;clip-path:polygon(0 6px,6px 6px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 6px,100% 6px,100% 100%,0 100%)}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]{background:var(--ink);color:var(--panel)}
+body[data-variant=E] .instrument-tabs button span{color:var(--accent);margin-right:5px}
+body[data-variant=E] .instrument-tabs button[aria-selected=true] span{color:var(--mint)}
+body[data-variant=E] .default-panel,body[data-variant=E] .advanced-panel{grid-column:1 / -1;width:100%}
+body[data-variant=E] .default-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 16px;align-items:start}
+body[data-variant=E] .default-panel[hidden],body[data-variant=E] .advanced-panel[hidden]{display:none!important}
+body[data-variant=E] .default-panel>.mode,body[data-variant=E] .default-panel>.pk{grid-column:1 / -1}
+body[data-variant=E] .atlas .default-panel>.instrument{width:100%;display:block;padding:22px 8px;min-width:0}
+body[data-variant=E] .default-panel>.instrument:has(#dose){grid-column:1;position:relative;border-bottom:0}
+body[data-variant=E] .default-panel>.instrument:has(#interval){grid-column:2;border-bottom:0}
+body[data-variant=E] .default-panel>.instrument:has(#dose):after{content:'';position:absolute;left:0;bottom:0;width:calc(200% + 16px);height:1px;background:var(--line)}
+body[data-variant=E] .advanced-panel>details{padding-top:0;display:block}
+body[data-variant=E] .advanced-panel>details>summary{display:none}
+body[data-variant=E] .advanced-panel .advanced{padding:22px 8px;border-bottom:1px solid var(--line)}
+body[data-variant=E] .atlas .instruments>.controlsfoot{margin-top:20px}
+
+body[data-variant=E] .atlas .instruments .default-panel>.instrument{width:100%;display:block}
+body[data-variant=E] .default-panel .label output{white-space:nowrap}
+body[data-variant=E] .default-panel .dosewrap{gap:12px}
+body[data-variant=E] .default-panel .cylinder{flex:none}
+
+/* Warm study: terracotta, apricot, walnut and folder-paper surfaces. */
+body[data-variant=E]{--bg:#edddc6;--panel:#fff0d8;--ink:#573b30;--muted:#765646;--line:#c7a789;--mint:#e8b879;--dark:#4c3731;--accent:#a55234;--orange:#ca7249;--gold:#e9bc72}
+body[data-variant=E] .stage{background:radial-gradient(circle at 1px 1px,#765347 .7px,transparent 1px) 0 0 / 9px 9px,var(--dark)}
+body[data-variant=E] .stage-head{color:#f4d7b1}
+body[data-variant=E] .advanced-panel .pk>input[type=range]{display:block}
+body[data-variant=E] .instrument-tabs{border-bottom:2px solid var(--ink);gap:10px;margin-top:16px;padding:0;align-items:flex-end}
+body[data-variant=E] .instrument-tabs button{--folder:#d7b48b;clip-path:none;position:relative;background:var(--folder);color:var(--ink);border:2px solid var(--ink);border-bottom:0;border-radius:0;padding:12px 8px 10px;margin-top:9px;box-shadow:none;isolation:isolate}
+body[data-variant=E] .instrument-tabs button:before{content:'';position:absolute;left:-2px;top:-10px;width:42%;height:10px;background:var(--folder);border:2px solid var(--ink);border-bottom:0;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 100%,0 100%);z-index:-1}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]{--folder:#fff0d8;background:var(--folder);color:var(--ink);font-weight:700;padding-top:15px;box-shadow:inset 0 -3px 0 var(--accent)}
+body[data-variant=E] .instrument-tabs button span{display:none}
+body[data-variant=E] .instrument-tabs button:hover{--folder:#f2ce99}
+
+/* Direct graphic controls throughout; folder fronts and selected time wedge. */
+body[data-variant=E] .advanced-panel .advanced>input[type=range]{display:none}
+body[data-variant=E] .instrument-tabs{gap:12px;padding-top:8px;border-bottom:0}
+body[data-variant=E] .instrument-tabs button{padding:20px 10px 14px;border-bottom:2px solid var(--ink);box-shadow:3px 3px 0 var(--line);text-align:left;margin-top:12px;min-height:56px}
+body[data-variant=E] .instrument-tabs button:before{width:48%;height:13px;top:-13px;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 100%,0 100%)}
+body[data-variant=E] .instrument-tabs button:after{content:'';position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]{padding-top:20px;background:var(--folder);box-shadow:3px 3px 0 var(--accent);transform:translateY(-3px)}
+body[data-variant=E] .instrument-tabs button span{display:inline-block;width:15px;height:11px;background:var(--mint);border:1px solid var(--ink);font-size:0;position:relative;vertical-align:middle;margin-right:8px}
+body[data-variant=E] .instrument-tabs button span:before{content:'';position:absolute;left:-1px;top:-4px;width:7px;height:3px;border:1px solid var(--ink);border-bottom:0;background:var(--mint)}
+body[data-variant=E] .dial{background:repeating-conic-gradient(transparent 0deg 28deg,var(--ink) 28deg 29deg,transparent 29deg 30deg),conic-gradient(from 0deg,var(--mint) 0deg var(--sweep,120deg),var(--panel) var(--sweep,120deg) 360deg)}
+body[data-variant=E] .advanced-panel .graphic-slider{height:76px}
+body[data-variant=E] .advanced-panel .graphic-scale{font-size:.6875rem;gap:14px}
+
+/* Folder shape carries the metaphor; no duplicate folder glyphs. */
+body[data-variant=E] .instrument-tabs button span{display:none}
+body[data-variant=E] .instrument-tabs button{padding-left:14px}
+/* Absolute art grows inside the existing stage instead of increasing its height. */
+body[data-variant=E] .atlas .stage{height:650px;min-height:650px}
+body[data-variant=E] .atlas .bodycanvas{position:absolute;left:50%;top:38px;transform:translateX(-50%);height:calc(100% - 82px);width:auto;max-width:90%;margin:0;object-fit:contain}
+body[data-variant=E] .legend .dot.orange{background:#ffe2a3}
+@media(max-width:680px){body[data-variant=E] .atlas .stage{height:435px;min-height:435px}body[data-variant=E] .atlas .bodycanvas{top:35px;height:calc(100% - 80px)}}
+
+body[data-variant=E] .legend .dot:not(.orange){background:#da7592}
+
+/* Simple folder tabs with a continuous silhouette outline. */
+body[data-variant=E] .instrument-tabs{gap:12px;padding-top:0;align-items:stretch;margin-top:8px}
+body[data-variant=E] .instrument-tabs button{--folder:#d7b48b;isolation:isolate;position:relative;min-height:58px;margin:0;padding:24px 12px 10px;border:0;clip-path:none;background:transparent;box-shadow:none;transform:none;text-align:left;color:var(--ink);font-weight:400}
+body[data-variant=E] .instrument-tabs button:before{content:'';position:absolute;z-index:-2;inset:0;width:auto;height:auto;border:0;background:var(--ink);clip-path:polygon(0 0,43% 0,calc(43% + 8px) 9px,100% 9px,100% 100%,0 100%)}
+body[data-variant=E] .instrument-tabs button:after{content:'';position:absolute;z-index:-1;inset:2px;width:auto;height:auto;border:0;box-shadow:none;background:var(--folder);clip-path:polygon(0 0,calc(43% - 1px) 0,calc(43% + 7px) 9px,100% 9px,100% 100%,0 100%)}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]{--folder:#fff0d8;background:transparent;padding-top:24px;color:var(--ink);font-weight:700;box-shadow:none;transform:none}
+body[data-variant=E] .instrument-tabs button[aria-selected=false]{filter:none;opacity:1}
+body[data-variant=E] .instrument-tabs button:hover{--folder:#f2ce99;filter:none}
+body[data-variant=E] .instrument-tabs button span{display:none}
+
+/* Clear selected folder: peach accent; inactive folder stays quiet. */
+body[data-variant=E] .instrument-tabs button[aria-selected=false]{--folder:#e3d4c0;color:#765646}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]{--folder:#f3bb8e;color:#573b30}
+body[data-variant=E] .instrument-tabs button[aria-selected=true]:before{background:#a55234}
+body[data-variant=E] .instrument-tabs button[aria-selected=false]:before{background:#947b67}
+
+/* Application-only structure, without prototype switches or comparison layouts. */
+body[data-variant=E] .intro{margin-bottom:18px;justify-content:flex-end}
+body[data-variant=E] #headline{display:block}
+body[data-variant=E] .instrument-tabs button{transition:filter .12s}
+body[data-variant=E] .folder-tabs button span{display:none}
+[hidden]{display:none!important}
+.source-dialog{max-width:720px;width:calc(100% - 40px);max-height:85vh;overflow:auto;background:var(--panel);color:var(--ink);border:2px solid var(--ink);padding:26px}
+.source-dialog::backdrop{background:#30241bb3}.source-dialog h2{font-size:1.3rem;margin:18px 0 10px}.source-dialog h3{margin:20px 0 8px}.source-dialog p,.source-dialog ul{font-size:.875rem;line-height:1.6;max-width:68ch}.source-dialog a{color:var(--accent)}.source-dialog code{white-space:normal}.source-dialog .close-dialog{float:right}.source-dialog table{width:100%;border-collapse:collapse;font-size:.8125rem;margin:12px 0}.source-dialog td,.source-dialog th{text-align:left;border-bottom:1px solid var(--line);padding:7px}
+body[data-variant=E] .app-status{min-height:22px;color:var(--muted);font-size:.8125rem;margin-top:10px}.app-status[data-error=true]{color:#983f2b}
+body[data-variant=E] .atlas .instruments>.section-top{margin-bottom:6px}
+body[data-variant=E] .default-panel .label output,body[data-variant=E] .advanced-panel .label output{white-space:nowrap}
+body[data-variant=E] .default-panel .dosewrap{gap:10px}.dose-buttons small{white-space:nowrap}
+body[data-variant=E] .folder-tabs{margin-bottom:18px}
+body[data-variant=E] .graph-tools{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-top:12px;flex-wrap:wrap}
+body[data-variant=E] .graph-tools .compare{margin:0;width:auto}.band-control{font-size:.8125rem;display:flex;align-items:center;gap:7px}.band-control input{accent-color:var(--accent)}
+body[data-pending=true] #chart,body[data-pending=true] #body{opacity:.6}
+body[data-variant=E] .stage{overflow:hidden}.stage>.legend span{white-space:nowrap}
+button:disabled{opacity:.5;cursor:default}button:disabled:active{transform:none}
+body[data-variant=E] .graphic-slider[aria-disabled=true]{opacity:.5;cursor:default}
+body[data-variant=E] .instrument-tabs button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+body[data-variant=E] .atlas .instruments{position:sticky;top:20px}
+@media(max-width:680px){body[data-variant=E] .atlas .instruments{position:static}.source-dialog{padding:18px}body[data-variant=E] .stage>.legend{left:8px;right:8px;font-size:.625rem;gap:9px}body[data-variant=E] #headline{font-size:1.1rem}body[data-variant=E] .default-panel>.instrument{padding-left:0;padding-right:0}.dose-buttons small{white-space:normal}}
+
+body[data-variant=E] .intro>div:first-child{display:block}
+
+body[data-variant=E] #explore:not([hidden]){display:block}
+@media(max-width:680px){.brand h1{white-space:nowrap}.nav>.tag{display:none}.nav #sources-open{font-size:.8125rem;padding:8px}}

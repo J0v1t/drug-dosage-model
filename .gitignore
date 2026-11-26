@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+tmp/
+
+.env
+.env.*
+!.env.example
+
+.scratch/
+web/layout-study.js
+docs/implementation-status.md

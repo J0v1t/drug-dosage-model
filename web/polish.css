@@ -1,0 +1,85 @@
+/* Medicine-inspired pixel controls, quieter surfaces and restrained motion. */
+html,.source-dialog{scrollbar-color:#ae7554 #e7d5ba;scrollbar-width:thin}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:#e7d5ba;border-left:1px solid #ceb292}
+::-webkit-scrollbar-thumb{background:#ae7554;border:3px solid #e7d5ba;border-radius:1px}
+::-webkit-scrollbar-thumb:hover{background:#8a543b}
+.source-dialog::-webkit-scrollbar-track{background:var(--panel)}
+.source-dialog::-webkit-scrollbar-thumb{border-color:var(--panel)}
+body[data-variant=E] header{border-bottom:1px solid #b991714d}
+body[data-variant=E] .intro .scenario-toolbar{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:nowrap}
+.scenario-picker{position:relative;min-width:210px;width:250px;max-width:100%}
+.scenario-picker:after{content:'';position:absolute;right:17px;top:calc(50% - 4px);width:7px;height:7px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);pointer-events:none}
+body[data-variant=E] #scenario{appearance:none;width:100%;padding:12px 42px 12px 14px;font-size:.875rem;line-height:1.4;border:1px solid #94725b;background:var(--panel);border-radius:2px}
+body[data-variant=E] #explore:not([hidden]){display:inline-flex;align-items:center;justify-content:center;margin:0;white-space:nowrap;border:1px solid #b48b6d;font-size:.8125rem;min-height:44px}
+body[data-variant=E] button{transition:transform 150ms cubic-bezier(.2,0,0,1),box-shadow 150ms cubic-bezier(.2,0,0,1),background-color 150ms,color 150ms,opacity 150ms;border-radius:2px}
+body[data-variant=E] button:not(:disabled):hover{transform:translateY(-1px);box-shadow:3px 4px 0 #b48b6d66}
+body[data-variant=E] button:not(:disabled):active{transform:translateY(1px) scale(.96);box-shadow:1px 1px 0 #b48b6d66}
+body[data-variant=E] .instrument-tabs button{border-radius:0}
+body[data-variant=E] .instrument-tabs button:before,body[data-variant=E] .instrument-tabs button:after{transition:background-color 160ms}
+body[data-variant=E] .instrument-tabs button:hover{box-shadow:none}
+body[data-variant=E] .graphic-slider i{transition:background-color 140ms,opacity 140ms}
+body[data-variant=E] .liquid{height:100%!important;transform-origin:bottom;transition:transform 120ms cubic-bezier(.2,0,0,1)}
+body[data-variant=E] .hand{transition:transform 130ms cubic-bezier(.2,0,0,1)}
+body[data-variant=E] .graphic-slider[aria-disabled=false]:hover{filter:brightness(1.04)}
+body[data-variant=E] .graphic-slider[aria-disabled=false]:focus-visible{outline-offset:5px}
+body[data-variant=E] .default-panel>.pk,body[data-variant=E] .advanced-panel .advanced{border-bottom-color:#b991715c}
+body[data-variant=E] .default-panel>.instrument:has(#dose):after{background:#b9917173}
+body[data-variant=E] .stage{border-color:#6d4b3b;box-shadow:4px 4px 0 #b58c6d80}
+body[data-variant=E] .chartbox{border-color:#98715a;box-shadow:3px 3px 0 #b58c6d59}
+body[data-variant=E] .transport #play,body[data-variant=E] .transport #restart{width:48px;min-width:48px;height:44px;padding:0;position:relative;display:inline-grid;place-items:center}
+.play-symbol,.pause-symbol{display:block;position:absolute;width:18px;height:20px;transition:opacity 170ms cubic-bezier(.2,0,0,1),transform 170ms cubic-bezier(.2,0,0,1),filter 170ms cubic-bezier(.2,0,0,1)}
+.play-symbol{background:currentColor;clip-path:polygon(0 0,5px 0,5px 3px,10px 3px,10px 6px,15px 6px,15px 8px,18px 8px,18px 12px,15px 12px,15px 14px,10px 14px,10px 17px,5px 17px,5px 20px,0 20px);transform:translateX(2px)}
+.pause-symbol{opacity:0;filter:blur(4px);transform:scale(.25);background:linear-gradient(90deg,currentColor 0 6px,transparent 6px 12px,currentColor 12px 18px)}
+.is-playing .play-symbol{opacity:0;transform:scale(.25);filter:blur(4px)}
+.is-playing .pause-symbol{opacity:1;transform:scale(1);filter:blur(0)}
+body[data-variant=E] .default-panel>.mode{gap:8px;margin-bottom:10px}
+body[data-variant=E] .mode button{position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 16px;border:1px solid #ac8265;box-shadow:2px 2px 0 #b48b6d4d}
+body[data-variant=E] .mode button[aria-pressed=true]{border-color:var(--ink)}
+.medicine-icon{display:block;width:66px;height:26px;image-rendering:pixelated;transition:transform 160ms cubic-bezier(.2,0,0,1)}
+.mode button:hover .medicine-icon{transform:translateY(-1px)}
+[data-tooltip]{position:relative}
+[data-tooltip]:after{content:attr(data-tooltip);position:absolute;z-index:30;bottom:calc(100% + 9px);left:50%;transform:translate(-50%,4px);padding:7px 9px;max-width:230px;width:max-content;white-space:normal;background:var(--ink);color:var(--panel);font:.75rem/1.5 var(--mono);border:1px solid #bb9879;box-shadow:2px 2px 0 #50382a33;opacity:0;pointer-events:none;transition:opacity 120ms,transform 120ms}
+[data-tooltip]:hover:after,[data-tooltip]:focus-visible:after{opacity:1;transform:translate(-50%,0)}
+body[data-variant=E] .mode button:first-child:after{left:0;transform:translate(0,4px)}
+body[data-variant=E] .mode button:first-child:hover:after,body[data-variant=E] .mode button:first-child:focus-visible:after{transform:translate(0,0)}
+body[data-variant=E] .mode button:last-child:after{left:auto;right:0;transform:translate(0,4px)}
+body[data-variant=E] .mode button:last-child:hover:after,body[data-variant=E] .mode button:last-child:focus-visible:after{transform:translate(0,0)}
+.app-footer{max-width:1500px;margin:0 auto;padding:0 4% 28px;display:flex;justify-content:flex-end}
+body[data-variant=E] .app-footer button{background:none;border:0;box-shadow:none;color:var(--muted);font-size:.75rem;padding:8px}
+body[data-variant=E] main{padding-bottom:36px}
+.source-dialog{border-color:#98715a;box-shadow:0 14px 45px #35251b40;border-radius:3px;scrollbar-gutter:stable}
+@media(max-width:680px){body[data-variant=E] .intro .scenario-toolbar{width:100%;gap:8px}.scenario-picker{min-width:0;flex:1;width:auto}body[data-variant=E] #scenario{font-size:.75rem;padding:12px 30px 12px 10px}.scenario-picker:after{right:12px}body[data-variant=E] #explore:not([hidden]){font-size:.6875rem;padding:10px 8px}.app-footer{padding-right:5%}body[data-variant=E] .intro{display:block}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:0s!important;transition-duration:0s!important}body[data-variant=E] button:not(:disabled):hover,body[data-variant=E] button:not(:disabled):active{transform:none}.play-symbol,.pause-symbol{filter:none}.is-playing .play-symbol{filter:none}}
+
+body[data-variant=E] .intro>.scenario-toolbar:first-child{display:flex;align-items:center}
+
+/* Inset research surfaces and flush reference list. */
+.source-dialog .equation-block{max-width:none;margin:12px 0 22px;padding:16px 18px 22px;background:#efddc4;border:1px solid #cfaf8f;border-radius:3px;box-shadow:inset 0 2px 5px #78513912,0 2px 0 #fff8e9}
+.source-dialog .equation-block code{display:block;line-height:1.9;font-size:.875rem}
+.source-dialog table{border-collapse:separate;border-spacing:0;background:#f7e5ca;border:1px solid #c7a280;border-radius:3px;overflow:hidden;box-shadow:0 3px 0 #ae805529;margin:16px 0 20px}
+.source-dialog th{background:#e5c6a0;color:#573b30;font-family:var(--mono);font-size:.75rem}
+.source-dialog td,.source-dialog th{padding:10px 12px;border-bottom:1px solid #d9b998}
+.source-dialog tr:nth-child(odd) td{background:#faecd6}
+.source-dialog tr:last-child td{border-bottom:0}
+.source-dialog .reference-list{margin:10px 0 0;padding-left:0;list-style-position:inside;max-width:none}
+.source-dialog .reference-list li{margin:0 0 10px;padding:0;line-height:1.65}
+@media(max-width:480px){.source-dialog .equation-block{padding:12px 14px 18px}.source-dialog td,.source-dialog th{padding:9px 8px}}
+
+/* Keep research surfaces proportional to their content. */
+.source-dialog .equation-block{width:fit-content;max-width:100%;padding:14px 20px 18px}
+.source-dialog table{width:auto;max-width:100%}
+.source-dialog td:first-child,.source-dialog th:first-child{padding-right:22px}
+@media(max-width:480px){.source-dialog .equation-block{padding:12px 14px 16px}.source-dialog td:first-child,.source-dialog th:first-child{padding-right:12px}}
+
+/* Equations and definitions share the available width. */
+.source-dialog p,.source-dialog ul{max-width:none}
+.source-dialog .equation-layout{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:22px;align-items:start;margin:12px 0 24px;padding:18px;background:#efddc4;border:1px solid #cfaf8f;border-radius:3px;box-shadow:inset 0 2px 5px #78513912,0 2px 0 #fff8e9}
+.source-dialog .equation-layout .equation-block{width:auto;max-width:none;margin:0;padding:0 20px 8px 0;background:none;border:0;border-right:1px solid #c9a786;box-shadow:none;border-radius:0}
+.source-dialog .equation-definitions p{margin:0;font-size:.8125rem;line-height:1.75}
+.source-dialog .equation-layout code{font-size:.8125rem;line-height:2}
+.source-dialog table{width:100%;table-layout:auto}
+.source-dialog table th:first-child{width:36%}
+@media(max-width:580px){.source-dialog .equation-layout{grid-template-columns:1fr;gap:14px;padding:14px}.source-dialog .equation-layout .equation-block{padding:0 0 14px;border-right:0;border-bottom:1px solid #c9a786}.source-dialog .equation-layout code{line-height:1.8}}
+
+body[data-variant=E] .legend .dot.orange{background:#ffdf48}
